@@ -22,15 +22,21 @@ const CartItem = ({ onContinueShopping }) => {
 
   const handleIncrement = (item) => {
         if (item) {
-            item.quantity++;
-            dispatch(updateQuantity(item));
+            const newitem = {
+                ...item,
+                quantity: item.quantity + 1
+            };
+            dispatch(updateQuantity(newitem));
         }
   };
 
   const handleDecrement = (item) => {
         if (item && item.quantity > 0) {
-            item.quantity--;
-            dispatch(updateQuantity(item));
+            const newitem = {
+                ...item,
+                quantity: item.quantity - 1
+            };
+            dispatch(updateQuantity(newitem));
         }
   };
 
@@ -44,6 +50,7 @@ const CartItem = ({ onContinueShopping }) => {
     if (item) {
         totalCost = item.quantity * item.cost;
     }
+    return totalCost;
   };
 
   const handleCheckoutShopping = (e) => {
