@@ -31,12 +31,14 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleDecrement = (item) => {
-        if (item && item.quantity > 0) {
+        if (item && item.quantity > 1) {
             const newitem = {
                 ...item,
                 quantity: item.quantity - 1
             };
             dispatch(updateQuantity(newitem));
+        } else {
+            dispatch(removeItem(item));
         }
   };
 
